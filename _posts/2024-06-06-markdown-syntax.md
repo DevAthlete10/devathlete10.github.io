@@ -5,12 +5,52 @@ author:       "Cristobal Sandoval"
 header-style: text
 catalog:      true
 tags:
-    - MarkDown    
-    - Study
-    - Fundamentals
+    - MarkDown 
 ---
 
- **Desde este momento me organizaré mis estudios y proyectos。**
+
+>*Basado en* [MarkDown](https://www.markdownguide.org/)
+
+## Code
+ 
+```dart
+print("Hola Mundo con Dart");
+```
+
+```json
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
+## Tabla
+
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
+
+## Link
+
+[Heading IDs](#heading-ids)
+
+## Tachar letra
+~~The world is flat.~~ 
+
+## Marcar elemento de una lista
+
+- [x]  Write the press release
+- [ ]  Update the website
+- [ ]  Contact the media
 
 
-— Vamos a ver hasta donde llego 。
+## Marcador
+<mark>very important words</mark>.
+
+
+## Imagen
+
+![Odisea en el espacio 2001](https://lapiedradesisifo.com/wp-content/uploads/2022/09/2001_1.jpeg)
+
