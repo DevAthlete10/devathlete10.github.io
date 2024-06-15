@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python"
+title: "Lenguaje Python"
 author: "Cristobal Sandoval"
 header-style: text
 catalog: true
