@@ -1,12 +1,12 @@
 ---
-layout:       post
-title:        "Camino del software"
-author:       "Cristobal Sandoval"
+layout: post
+title: "Camino del software"
+author: "Cristobal Sandoval"
 header-style: text
-catalog:      true
+catalog: true
 tags:
-    - Software Fundamentals
-    - Indice
+  - Software Fundamentals
+  - Indice
 ---
 
 # Marco de estudio para aprender el desarrollo del software según ESCUELA IT
@@ -15,16 +15,15 @@ tags:
 print("Gracias Luis fernandez y Escuela IT")
 ```
 
-
 #### Fundamentos
 
 1. [Fundamentos-del-Software](https://devathlete10.github.io/2024/06/07/software_fundamentals/)
-2. Patrones (proximamente...)
+2. [Patrones](https://devathlete10.github.io/2024/06/15/patterns/)
 3. Conocimiento (proximamente...)
-4. Complejidad (proximamente...)
+4. [Complejidad](https://devathlete10.github.io/2024/06/15/complexity/)
 5. Software (proximamente...)
-6. Disciplinas-del-software (proximamente...)
-7. Proceso-del-software (proximamente...)
+6. [Disciplinas del software](https://devathlete10.github.io/2024/06/15/software_discipline/)
+7. [Procesos del software](https://devathlete10.github.io/2024/06/15/software_process/)
 8. Aplicaciones-del-software (proximamente...)
 9. Aplicaciones-web (proximamente...)
 
@@ -87,4 +86,3 @@ print("Gracias Luis fernandez y Escuela IT")
 7. UML (proximamente...)
 8. XML (proximamente...)
 9. YAML (proximamente...)
-
