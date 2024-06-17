@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Estructura general de los lenguajes de programación"
+title: "Estructura general de los lenguajes de programación de alto nivel"
 author: "Cristobal Sandoval"
 header-style: text
 catalog: true
@@ -14,10 +14,11 @@ tags:
 1. Sintaxis básica
    1. Comentarios
    2. Secuencia de escape
-   3. Variables Operadores
-   4. Metadata
-   5. Importación / librería
-   6. Palabras reservadas
+   3. Variables
+   4. Operadores
+   5. Metadata
+   6. Importación / librería
+   7. Palabras reservadas
 2. Tipos básicos
    1. Carácteres
    2. Enteros
@@ -25,11 +26,9 @@ tags:
    4. Imaginarios
    5. Booleanos
 3. Tipos Avanzados
-   1. Lista
-   2. Lista sin dato repetido (set)
-   3. Diccionario
-   4. Tuplas
-   5. Operaciones generales
+   1. Listas
+   2. Diccionario
+   3. Operaciones generales
 4. Funciones
    1. Sintaxis de la función
 5. Flujo de control
