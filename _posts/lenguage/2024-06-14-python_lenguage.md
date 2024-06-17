@@ -425,14 +425,206 @@ ejemplo_de_la_clase = NombreDeLaClase()
 
 #### Constructor de la clase
 
+```python
+
+class NombreClase:
+    def __init__(self):
+        """ Constructor de la clase """
+
+```
+
 #### Propiedades de la clase
+
+```python
+
+class NombreClase:
+
+    nombre_del_atributo_propiedad = "Nombre del atributo o propiedad"
+
+```
 
 #### Métodos de la clase
 
+```python
+
+class NombreClase:
+    def nombre_metodo(self):
+        """Nombre función """
+
+```
+
+#### Super de la clase
+
+```python
+
+class NombreClase:
+    # Ideal para herencia multiple de los atributos
+    NombreDeLaOtraClase.__init__(self)
+    # Ideal para herencia simple y metodos
+    super()
+
+```
+
 #### Objeto de la clase
+
+```python
+
+NombreClase()
+
+nombre_clase = NombreClase()
+
+```
 
 #### Herencia
 
+```python
+
+"""Module providing a function printing python version."""
+
+class Vehiculo:
+    """Class representing a CRUD"""
+    def __init__(self, name_vehicle):
+        self.name_vehicle = name_vehicle
+
+    def __str__(self):
+        return f"Vehiculo seleccionado: {self.name_vehicle}"
+
+    def encender(self):
+        """ Encender vehiculo """
+        return "Encendiendo vehiculo"
+
+    def apagar(self):
+        """ Apagando vehiculo """
+        return "Apagando vehiculo"
+
+class Motocicleta(Vehiculo):
+    """Class representing a Service aplicando CRUD"""
+
+
+motocicleta = Motocicleta(name_vehicle="Honda xblade 160")
+
+print(motocicleta)
+print(motocicleta.encender())
+print(motocicleta.apagar())
+
+```
+
 #### Herencia multiple
 
+```python
+
+"""Module providing a function printing python version."""
+
+class Vehiculo:
+    """Class Vehiculo"""
+    def __init__(self, name_vehicle):
+        self.name_vehicle = name_vehicle
+
+    def __str__(self):
+        return f"Vehiculo seleccionado: {self.name_vehicle}"
+
+    def encender(self):
+        """ Encender vehiculo """
+        return "Encendiendo vehiculo"
+
+    def apagar(self):
+        """ Apagando vehiculo """
+        return "Apagando vehiculo"
+
+
+class LeyesDeTransito:
+    """ Class Leyes de transito """
+    def __init__(self,licencia_aprobada):
+        self.licencia_aprobada = licencia_aprobada
+
+    def tipos_de_licencia(self):
+        """ Tipo de licencia """
+        return "D,C,B y Profecional"
+
+
+class Chofer(LeyesDeTransito,Vehiculo):
+    """ CHofer de vehiculo """
+    def __init__(self,licencia_aprobada,name_vehicle):
+        LeyesDeTransito.__init__(self, licencia_aprobada)
+        Vehiculo.__init__(self, name_vehicle)
+
+chofer = Chofer(licencia_aprobada=True,name_vehicle="Honda xblade 160")
+
+print(chofer)
+print(chofer.encender())
+print(chofer.apagar())
+print(chofer.tipos_de_licencia())
+print(chofer.licencia_aprobada)
+
+```
+
 #### Clase abstracta
+
+```python
+
+"""Module providing a function printing python version."""
+from abc import ABC, abstractmethod
+
+#print a text
+class Crud(ABC):
+    """Class representing a CRUD"""
+
+    @property
+    @abstractmethod
+    def name_service(self):
+        """ nombre del servicio """
+
+    @abstractmethod
+    def create(self):
+        """ crear """
+        # pass <= sse puede colocar o no,
+        # si la comunidad lo indica que no entonces NO colocarlo
+
+    @abstractmethod
+    def delete(self):
+        """ eliminar """
+
+    @abstractmethod
+    def update(self):
+        """ actualizar """
+
+    @abstractmethod
+    def get_all(self):
+        """ obtener todo """
+
+    @abstractmethod
+    def get_id(self):
+        """ obtener por id """
+
+class ServiceHttp(Crud):
+    """Class representing a Service aplicando CRUD"""
+
+    name_service = "HTTP"
+
+    def create(self):
+        """ crear """
+        return "creando"
+
+    def delete(self):
+        """ eliminar """
+        return "eliminando"
+
+    def update(self):
+        """ actualizar """
+        return "actualizando"
+
+    def get_all(self):
+        """ obtener todo """
+        return "obteniendo todo"
+
+    def get_id(self):
+        """ obtener por id """
+        return "obteniendo por id"
+
+
+servicio_http = ServiceHttp()
+
+print(servicio_http.name_service)
+print(servicio_http.delete())
+
+```
