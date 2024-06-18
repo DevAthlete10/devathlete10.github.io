@@ -650,16 +650,21 @@ print(servicio_http.delete())
 
 #### Clasificación de los paquetes nativos
 
-|     Nombre del paquete      |   Clasificación    |
-| :-------------------------: | :----------------: |
-|        [_str_](#str)        |    Tipo de dato    |
-|      [_float_](#float)      |    Tipo de dato    |
-|       [_bool_](#bool)       |    Tipo de dato    |
-|        [_int_](#int)        |    Tipo de dato    |
-|       [_time_](#time)       |       Fecha        |
-| [_webbrowser_](#webbrowser) |        nose        |
-|   [_datetime_](#datetime)   |       Fecha        |
-|     [_random_](#random)     | Números aleatorios |
+|     Nombre del paquete      |     Clasificación     |
+| :-------------------------: | :-------------------: |
+|        [_str_](#str)        |     Tipo de dato      |
+|      [_float_](#float)      |     Tipo de dato      |
+|       [_bool_](#bool)       |     Tipo de dato      |
+|        [_int_](#int)        |     Tipo de dato      |
+|       [_time_](#time)       |         Fecha         |
+|   [_datetime_](#datetime)   |         Fecha         |
+| [_webbrowser_](#webbrowser) | Manejo de navegadores |
+|     [_random_](#random)     |  Números aleatorios   |
+|    [_pathlib_](#pathlib)    |   Rutas de archivos   |
+|       [_json_](#json)       |    Tipo de archivo    |
+|    [_zipfile_](#zipfile)    |    Tipo de archivo    |
+|        [_csv_](#csv)        |    Tipo de archivo    |
+|         [_os_](#os)         |         nose          |
 
 #### str
 
@@ -675,9 +680,259 @@ print(servicio_http.delete())
 
 #### webbrowser
 
+```python
+
+import webbrowser
+
+print("productos encontrado!")
+
+webbrowser.open("https://google.com")
+
+
+```
+
 #### datetime
 
+```python
+
+# https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
+
+""" Modulos """
+from datetime import datetime, timedelta
+
+fecha = datetime(1997,7,2) + timedelta(weeks=1)
+fecha_2 = datetime(2017,7,2)
+hoy = datetime.now()
+print(fecha)
+print(hoy)
+
+fechaStr = datetime.strptime("1997-07-02","%Y-%m-%d")
+
+print(fechaStr)
+print(fecha.strftime("%Y.%m.%d"))
+
+delta = fecha_2 - fecha
+print(delta)
+
+print("dias",delta.days)
+print("segundos",delta.seconds)
+print("microseconds",delta.microseconds)
+print("total_seconds",delta.total_seconds())
+
+
+```
+
 #### random
+
+```python
+
+import random
+import string
+
+numeros = [1,2,3,4,5,6,7,8,9]
+numeros_2 = [1,2,3,4,5,6,7,8,9]
+
+random.shuffle(numeros)
+
+print(
+    random.random(),
+    random.randint(1,10),
+    numeros,
+    random.choices(numeros_2),
+    random.choices(numeros_2,k=3),
+    "".join(random.choices("abcdefghi.,123",k=3)),
+)
+
+chars = string.ascii_letters
+digitos = string.digits
+seleccion = random.choices(chars + digitos,k=16)
+
+contrasena = "".join(seleccion)
+print(f"contraeña: {contrasena}")
+
+
+```
+
+#### pathlib
+
+```python
+
+""" Modulos """
+from pathlib import Path
+
+# Ruta del archivo a seleccionar
+archivo = Path("paquete/creado.txt")
+
+# Leer un texto existente
+texto = archivo.read_text("utf-8").split("\n")
+
+# Leer un Modificar un texto existente
+texto.insert(0,"Hola perro")
+texto.append("Hola perro")
+# archivo.write_text("Hola perro","utf-8")
+# Se elimina todo el texto y se cambia por lo escrito
+# entre los parentesis
+archivo.write_text("\n".join(texto),"utf-8")
+
+```
+
+#### os
+
+```python
+
+from io import open
+
+#ESCRITURA
+texto = "Hola perro"
+archivo = open("paquete/hola-perro.txt","w")
+archivo.write(texto)
+archivo.close()
+
+# LECTURA
+archivo = open("paquete/hola-perro.txt")
+texto = archivo.read()
+archivo.close()
+print(texto)
+
+# LECTURA TIPO LISTA
+archivo = open("paquete/hola-perro.txt")
+texto = archivo.readlines()
+archivo.close()
+print(texto)
+
+
+#  WITH Y SEEK
+with open("paquete/hola-perro.txt") as archivo:
+    print(archivo.readlines())
+    archivo.seek(0)
+    for linea in archivo:
+        print(f"linea => {linea}")
+
+# AGREGAR
+archivo = open("paquete/hola-perro.txt","a+")
+archivo.write("Chao perro :(")
+archivo.close()
+
+#  LECTURA Y ESCRITURA
+with open("paquete/hola-perro.txt","r+") as archivo:
+    texto = archivo.readlines()
+    archivo.seek(0)
+    texto[0] = "Holaaaaaa perrito"
+    archivo.writelines(texto)
+
+
+```
+
+#### zipfile
+
+```python
+
+""" Modulos """
+from pathlib import Path
+from zipfile import ZipFile
+
+# ESCRIBIR
+with ZipFile("paquete/comprimidos.zip", "w") as zip:
+    for path in Path().rglob("*.*"):
+        print(path)
+        if str(path) != "paquete\comprimidos.zip":
+            zip.write(path)
+
+# LEER
+with ZipFile("paquete/comprimidos.zip") as zip:
+    info = zip.getinfo("comprimidos_pruebas.py")
+    print(
+        info.file_size,
+        info.compress_size
+    )
+    zip.extractall("paquete/descomprimidos")
+
+```
+
+#### json
+
+```python
+
+""" Modulos """
+import json
+from pathlib import Path
+
+productos = [
+    {"id":1,"name":"gato"},
+    {"id":2,"name":"perro"},
+    {"id":3,"name":"pajaro"},
+]
+
+# CREAR JSON
+data = json.dumps(productos)
+Path("paquete/productos.json").write_text(data)
+
+# LEER JSON
+data = Path("paquete/productos.json").read_text(encoding="utf-8")
+productos = json.loads(data)
+print(productos)
+
+# MODIFICAR JSON
+productos[0]["name"] = "Lagartija"
+Path("paquete/productos.json").write_text(json.dumps(productos))
+
+
+```
+
+#### csv
+
+```python
+
+""" Modulos """
+
+import csv
+import os
+
+
+# ESCRIBIR
+with open("paquete/cristobal.csv","w") as archivo:
+    writer = csv.writer(archivo)
+    writer.writerow(["left_id","center_id","texto"])
+    writer.writerow([1000,1,"right text"])
+    writer.writerow([1001,2,"right ffff"])
+
+# LEER
+with open("paquete/cristobal.csv") as archivo:
+    reader = csv.reader(archivo)
+    print(list(reader))
+    archivo.seek(0)
+    for linea in reader:
+        print(linea)
+
+# ACTUALIZAR
+with open("paquete/cristobal.csv") as r,open("paquete/cristobal_sandoval.csv","w") as w:
+    reader = csv.reader(r)
+    writer = csv.writer(w)
+    for linea in reader:
+        if linea[0] == "1000":
+            writer.writerow([1000,1,"text modificado"])
+        else:
+            writer.writerow(linea)
+    os.remove("paquete/cristobal.csv")
+    os.rename("paquete/cristobal_sandoval.csv","paquete/cristobal.csv")
+
+```
+
+# Gestión de dependencias externas
+
+#### Clasificación de los paquetes no nativos
+
+|   Nombre del gestor   | Clasificación |
+| :-------------------: | :-----------: |
+|     [_pip_](#pip)     |               |
+|  [_pipenv_](#pipenv)  |               |
+| [_pipfile_](#pipfile) |               |
+
+#### pip
+
+#### pipenv
+
+#### pipfile
 
 # Paquetes más populares no nativos
 
@@ -685,10 +940,7 @@ print(servicio_http.delete())
 
 |   Nombre del paquete    | Clasificación |
 | :---------------------: | :-----------: |
-|  [_pathlib_](#pathlib)  |     Ruta      |
-| [_requests_](#requests) |     Ruta      |
-
-#### pathlib
+| [_requests_](#requests) |     HTTP      |
 
 #### requests
 
