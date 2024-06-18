@@ -105,6 +105,23 @@ sumar_elegante += 2
 
 #### Importación / librería
 
+```python
+
+""" Modulos """
+# Importar desde la misma carpeta
+from usuarios import Usuario, cat_bruno
+
+# Importar desde la misma carpteta el modulo completo
+import main
+
+# Importar desde sub_paquetes
+from paquete.sub_paquete.usuarios import Usuario, cat_bruno
+
+usuario = Usuario()
+CREADO = usuario.create()
+
+```
+
 #### Palabras reservadas
 
 | Palabra reservada |                 Descripción                 |
@@ -626,5 +643,62 @@ servicio_http = ServiceHttp()
 
 print(servicio_http.name_service)
 print(servicio_http.delete())
+
+```
+
+# Paquetes más populares nativos
+
+#### Clasificación de los paquetes nativos
+
+|     Nombre del paquete      |   Clasificación    |
+| :-------------------------: | :----------------: |
+|        [_str_](#str)        |    Tipo de dato    |
+|      [_float_](#float)      |    Tipo de dato    |
+|       [_bool_](#bool)       |    Tipo de dato    |
+|        [_int_](#int)        |    Tipo de dato    |
+|       [_time_](#time)       |       Fecha        |
+| [_webbrowser_](#webbrowser) |        nose        |
+|   [_datetime_](#datetime)   |       Fecha        |
+|     [_random_](#random)     | Números aleatorios |
+
+#### str
+
+#### float
+
+#### bool
+
+#### int
+
+#### int
+
+#### time
+
+#### webbrowser
+
+#### datetime
+
+#### random
+
+# Paquetes más populares no nativos
+
+#### Clasificación de los paquetes no nativos
+
+|   Nombre del paquete    | Clasificación |
+| :---------------------: | :-----------: |
+|  [_pathlib_](#pathlib)  |     Ruta      |
+| [_requests_](#requests) |     Ruta      |
+
+#### pathlib
+
+#### requests
+
+```python
+
+# pipenv install requests
+ import requests
+
+ url = "https://jsonplaceholder.typicode.com/users"
+
+ resp = requests.get(url)
 
 ```
