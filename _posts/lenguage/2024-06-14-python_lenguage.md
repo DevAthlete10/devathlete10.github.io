@@ -924,13 +924,106 @@ with open("paquete/cristobal.csv") as r,open("paquete/cristobal_sandoval.csv","w
 
 |   Nombre del gestor   | Clasificación |
 | :-------------------: | :-----------: |
-|     [_pip_](#pip)     |               |
+|    [_pip3_](#pip3)    |               |
 |  [_pipenv_](#pipenv)  |               |
 | [_pipfile_](#pipfile) |               |
 
-#### pip
+#### pip3
+
+> Instalador de paquetes
+
+```python
+# Instalar última versión del paquete
+pip3 install nombre_paquete
+
+# Instalar versión deseada del paquete
+pip3 install nombre_paquete==2.2.0
+
+# Instalar la última versión según el
+# orden versionado semantico deseado del paquete
+pip3 install nombre_paquete==2.2.*
+pip3 install nombre_paquete==2.*
+
+# Instalar la última versión del paquete según
+# el criterio pip3
+pip3 install nombre_paquete~=2.2.0
+
+# Desintalar un paquete
+pip3 uninstall
+
+# Mostrar la lista de paquete instaldos
+pip3 list
+
+# Crear ambiente virtual
+python -m venv env
+
+# Seleccionar entorno virtual
+Desde el editor de código configurarlo
+
+# Activar entorno virtual
+"""
+En terminal colocar la ruta del archivo
+"activate.bat" => comunmente se encuentra en
+"env/scripts/activate.bat" en el terminal
+
+"""
+```
+
+#### Ambiente virtual (Localmente)
+
+```python
+# Crear ambiente virtual
+python -m venv env
+
+# Seleccionar ambiente virtual
+Desde el editor de código configurarlo
+
+# Activar ambiente virtual
+"""
+En terminal colocar la ruta del archivo
+"activate.bat" => comunmente se encuentra en
+"env/scripts/activate.bat" en el terminal
+
+"""
+# Desactivar ambiente virutal
+
+```
 
 #### pipenv
+
+```python
+# Instalar
+pip3 install pipenv
+
+# Activar ambiente virtual
+pipenv shell
+
+# Desactivar ambiente virtual
+exit
+
+# Saber en donde esta ubicado el ambiente virtual
+pipenv --venv
+
+# Eliminar el ambiente virtual
+rm -rf Path_del_ambiente_virtual
+
+# Ignorar el archivo "Pipfile"
+pipenv install --ignore-pipfile
+
+# Ver las dependencias instaladas
+pipenv graph
+
+# Dependencias instaladas no a la última versión
+pipenv update --outdated
+
+# Actualizar todas las dependencias instaladas
+pipenv update
+
+# Actualizar una dependencia específica
+pipenv update nombre_paquete
+
+
+```
 
 #### pipfile
 
