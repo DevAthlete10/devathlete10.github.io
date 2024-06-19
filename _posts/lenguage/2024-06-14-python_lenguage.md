@@ -922,11 +922,10 @@ with open("paquete/cristobal.csv") as r,open("paquete/cristobal_sandoval.csv","w
 
 #### Clasificación de los paquetes no nativos
 
-|   Nombre del gestor   | Clasificación |
-| :-------------------: | :-----------: |
-|    [_pip3_](#pip3)    |               |
-|  [_pipenv_](#pipenv)  |               |
-| [_pipfile_](#pipfile) |               |
+|  Nombre del gestor  | Clasificación |
+| :-----------------: | :-----------: |
+|   [_pip3_](#pip3)   |               |
+| [_pipenv_](#pipenv) |               |
 
 #### pip3
 
@@ -954,19 +953,9 @@ pip3 uninstall
 # Mostrar la lista de paquete instaldos
 pip3 list
 
-# Crear ambiente virtual
-python -m venv env
+# Herramientas para generar empaquetado
+pip3 install setuptools wheel twine
 
-# Seleccionar entorno virtual
-Desde el editor de código configurarlo
-
-# Activar entorno virtual
-"""
-En terminal colocar la ruta del archivo
-"activate.bat" => comunmente se encuentra en
-"env/scripts/activate.bat" en el terminal
-
-"""
 ```
 
 #### Ambiente virtual (Localmente)
@@ -1025,17 +1014,20 @@ pipenv update nombre_paquete
 
 ```
 
-#### pipfile
-
 # Paquetes más populares no nativos
 
 #### Clasificación de los paquetes no nativos
 
-|   Nombre del paquete    | Clasificación |
-| :---------------------: | :-----------: |
-| [_requests_](#requests) |     HTTP      |
+|         Nombre del paquete          |    Clasificación     |
+| :---------------------------------: | :------------------: |
+|       [_requests_](#requests)       |         HTTP         |
+| [_beautifulsoup4_](#beautifulsoup4) |     scraping web     |
+|       [_openpyxl_](#openpyxl)       |   ead/write Excel    |
+|       [_selenium_](#selenium)       | Prueba automatizadas |
 
 #### requests
+
+[Link de la documentación](https://pypi.org/project/requests/)
 
 ```python
 
@@ -1045,5 +1037,70 @@ pipenv update nombre_paquete
  url = "https://jsonplaceholder.typicode.com/users"
 
  resp = requests.get(url)
+
+```
+
+#### beautifulsoup4
+
+[Link de la documentación](https://www.crummy.com/software/BeautifulSoup/bs4/doc.es/)
+
+```python
+# pipenv install beautifulsoup4, requests
+import requests
+
+from bs4 import BeautifulSoup
+
+url = "https://pub.dev/packages"
+
+respuesta = requests.get(url).text
+
+soup = BeautifulSoup(respuesta,"html.parser")
+
+preguntas = soup.select(".packages-item")
+
+for pregunta in preguntas:
+    titulo = pregunta.select_one(".packages-title").get_text()
+    puntaje = pregunta.select_one(".packages-scores").get_attribute_list("href")
+    print(f"Titulo: {titulo} \n link: {puntaje} \n")
+
+```
+
+#### openpyxl
+
+[Link de la documentación](https://openpyxl.readthedocs.io/en/stable/)
+
+```python
+
+# pipenv install openpyxl
+import openpyxl
+
+wb = openpyxl.load_workbook("Libro1.xlsx")
+
+hoja_activa = wb.active
+wb.create_sheet("gola")
+celda = hoja_activa["A1"]
+celda_opcion_2 = hoja_activa.cell(row=2,column=2)
+celda.value = "Cristobal"
+print(wb["Hoja1"])
+print(wb.sheetnames)
+print(hoja_activa)
+print(celda_opcion_2)
+print(hoja_activa["A1"])
+
+for fila in range(1,hoja_activa.max_row):
+    for column in range(1,hoja_activa.max_column):
+        new_celda = hoja_activa.cell(row=fila,column=column)
+        print(fila,column,new_celda.value)
+
+wb.save("nuevo_excel.xlsx")
+
+```
+
+#### selenium
+
+[Link de la documentación](https://selenium-python.readthedocs.io/)
+
+```python
+
 
 ```
